@@ -172,6 +172,7 @@ export const AppointmentForm = ({
               label="Expected appointment date"
               showTimeSelect
               dateFormat="MM/dd/yyyy  -  h:mm aa"
+              minDate={new Date()}
             />
 
             <div

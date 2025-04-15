@@ -43,10 +43,11 @@ interface CustomProps {
     children?: React.ReactNode;
     renderSkeleton?: (field: any) => React.ReactNode;
     fieldType: FormFieldType;
+    minDate?: Date;
 }
 
 const RenderInput = ({field, props}: {field:any; props: CustomProps}) => {
-    const {fieldType, placeholder, iconSrc, iconAlt, dateFormat, showTimeSelect, renderSkeleton, children, disabled, name, label} = props;
+    const {fieldType, placeholder, iconSrc, iconAlt, dateFormat, showTimeSelect, renderSkeleton, children, disabled, name, label, minDate} = props;
     switch (fieldType) {
         case FormFieldType.INPUT:
             return (
@@ -111,26 +112,27 @@ const RenderInput = ({field, props}: {field:any; props: CustomProps}) => {
             )
         case FormFieldType.DATE_PICKER:
           return (
-              <div className="flex rounded-md border border-dark-500 bg-dark-400">
-                    <Image
-                      src="/assets/icons/calendar.svg"
-                      height={24}
-                      width={24}
-                      alt="calendar"
-                      className="ml-2"
-                    />
-                    <FormControl>
-                      <ReactDatePicker
-                          showTimeSelect={showTimeSelect ?? false}
-                          selected={field.value}
-                          onChange={(date) => field.onChange(date)}
-                          timeInputLabel="Time:"
-                          dateFormat={dateFormat ?? "dd/MM/yyyy"}
-                          wrapperClassName="date-picker"
-                          placeholderText={placeholder}
-                        />
-                      </FormControl>
-                </div>
+            <div className="flex rounded-md border border-dark-500 bg-dark-400">
+            <Image
+              src="/assets/icons/calendar.svg"
+              height={24}
+              width={24}
+              alt="calendar"
+              className="ml-2"
+            />
+            <FormControl>
+              <ReactDatePicker
+                showTimeSelect={showTimeSelect ?? false}
+                selected={field.value}
+                onChange={(date) => field.onChange(date)}
+                timeInputLabel="Time:"
+                dateFormat={dateFormat ?? "dd/MM/yyyy"}
+                wrapperClassName="date-picker"
+                minDate={minDate} // now referencing the prop correctly
+                placeholderText={placeholder}
+              />
+            </FormControl>
+          </div>
             )
         case FormFieldType.SELECT:
           return (

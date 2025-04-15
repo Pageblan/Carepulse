@@ -83,7 +83,11 @@ export const columns: ColumnDef<Appointment>[] = [
   {
     id: "actions",
     header: () => <div className="pl-4">Actions</div>,
-    cell: ({ row: {original:data} }) => {
+    cell: ({ row: { original: data } }) => {
+      // Only render actions if the appointment status is pending
+      if (data.status !== "pending") {
+        return null; // Don't show anything if not pending
+      }
       return (
         <div className="flex gap-1">
           <AppointmentModal  

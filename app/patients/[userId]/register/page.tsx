@@ -3,7 +3,7 @@ import Image from "next/image";
 import {RegisterForm} from "@/components/forms/RegisterForm";
 import { getUser } from "@/lib/actions/patient.actions";
 
-const Register = async ({ params: { userId } }: SearchParamProps) => {
+const Register = async ({ params: { userId} }: SearchParamProps) => {
   const user = await getUser(userId);
 
   return (
@@ -19,6 +19,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
           />
 
           <RegisterForm user={user} />
+          
 
           <p className="c">© 2024 CarePluse</p>
         </div>

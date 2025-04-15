@@ -29,6 +29,12 @@ export default function Home({searchParams}: SearchParamProps) {
             <Link href="/?admin=true" className="text-green-500">
               Admin
             </Link>
+            <Link href="/product" className="text-green-500">
+              Product
+            </Link>
+            <Link href="/news" className="text-green-500">
+             News
+            </Link>
           </div>
         </div>
       </section>

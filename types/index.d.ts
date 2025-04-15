@@ -54,3 +54,11 @@ declare type UpdateAppointmentParams = {
   appointment: Appointment;
   type: string;
 };
+
+declare type  GetMedicineParams = {
+  $id: string;
+  medicineName: string;
+  image:string;
+  Description:string;
+  Price:string;
+}
